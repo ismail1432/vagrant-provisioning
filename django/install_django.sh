@@ -6,18 +6,12 @@ DB_NAME=$2
 DB_USER=$3
 DB_PWD=$4
 
-# install pip and postgres
-apt-get install -y python-pip postgresql postgresql-contrib
+# install pip
+apt-get install -y python-pip
 
-# create the postgres user and database
-cat << EOF | su - postgres -c psql
-CREATE USER $DB_USER WITH PASSWORD '$DB_PWD';
-
-CREATE DATABASE $DB_NAME WITH OWNER $DB_USER;
-EOF
-
-# install django and its dependencies
-pip install -r /vagrant/provision/django/requirements.txt
+# install django and neo4django
+pip install Django==1.7.1
+pip install neo4django
 
 # create the django project from my template
 cd /vagrant

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-apt-get install -y zsh curl
+apt-get install -y zsh
 su -c "curl https://raw.githubusercontent.com/meatballs/dotfiles/master/install.sh > ~/install.sh" vagrant
 su -c "chmod 774 ~/install.sh" vagrant
 su -c "~/install.sh" vagrant
