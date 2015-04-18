@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "Starting dotfiles installation"
 
 apt-get install -y zsh
 su -c "curl https://raw.githubusercontent.com/meatballs/dotfiles/master/install.sh > ~/install.sh" vagrant
