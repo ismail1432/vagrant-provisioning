@@ -8,7 +8,7 @@ DJANGO_PROJECT=$1
 apt-get install -y python-pip
 
 # install python packages
-pip install -r requirements.txt
+pip install -r /vagrant/requirements.txt
 
 # Create database
 su postgres -c "createuser -w -d -r -s $DJANGO_PROJECT"
