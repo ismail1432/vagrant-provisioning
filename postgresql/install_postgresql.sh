@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 echo "Starting Postgresql installation"
 
-apt-get install postgresql postgresql-contrib
+apt-get -y install postgresql postgresql-contrib
