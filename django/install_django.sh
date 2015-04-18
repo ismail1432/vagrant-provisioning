@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "Starting Django installation"
 
 # Assign the script arguments to meaningful variables
 DJANGO_PROJECT=$1
