@@ -11,9 +11,10 @@ apt-get install -y python-pip
 pip install -r /vagrant/requirements.txt
 
 # Set environment variables
-export DEBUG=TRUE
-export SECRET_KEY="LousyKeyOnlySuitableForDevEnvironments"
-export DATABASE_URL="postgres://djaxelrod:djaxelrod@localhost/djaxelrod"
+sudo echo "DEBUG=TRUE" >> /etc/environment
+sudo echo "SECRET_KEY='LousyKeyOnlySuitableForDevEnvironments'" >> /etc/environment
+sudo echo "DATABASE_URL='postgres://djaxelrod:djaxelrod@localhost/djaxelrod'" >> /etc/environment
+for line in $( cat /etc/environment ) ; do export $line ; done
 
 # Create database
 su postgres -c "createuser -w -d -r -s $DJANGO_PROJECT"
