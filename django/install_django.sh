@@ -12,11 +12,17 @@ pip install -r /vagrant/requirements.txt
 
 # Create database
 su postgres -c "createuser -w -d -r -s $DJANGO_PROJECT"
+sudo -u postgres psql -c "ALTER USER $DJANGO_PROJECT WITH PASSWORD '$DJANGO_PROJECT';"
 su postgres -c "createdb -O $DJANGO_PROJECT $DJANGO_PROJECT"
+cd /vagrant
+python manage.py migrate
 
-# Set environment variables
+# Create .env file
+touch .env
+echo "DEBUG='True'" >> .env
+echo "SECRET_KEY='NeedABetterSecretKey'" >> .env
+echo "DATABASE_URL='postgres://$DJANGO_PROJECT:$DJANGO_PROJECT@localhost/$DJANGO_PROJECT'" >> .env
 
 # configure the django dev server as an upstart daemon
 cp /vagrant/provision/django/django-server.conf /etc/init
-sed -i "s/{{ project_name }}/$DJANGO_PROJECT/" /etc/init/django-server.conf
 start django-server
