@@ -17,12 +17,6 @@ su postgres -c "createdb -O $DJANGO_PROJECT $DJANGO_PROJECT"
 cd /vagrant
 python manage.py migrate
 
-# Create .env file
-touch .env
-echo "DEBUG='True'" >> .env
-echo "SECRET_KEY='NeedABetterSecretKey'" >> .env
-echo "DATABASE_URL='postgres://$DJANGO_PROJECT:$DJANGO_PROJECT@localhost/$DJANGO_PROJECT'" >> .env
-
 # configure the django dev server as an upstart daemon
 cp /vagrant/provision/django/django-server.conf /etc/init
 start django-server
