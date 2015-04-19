@@ -9,4 +9,4 @@ timezone="Europe/London"
 echo $timezone > /etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 apt-get update
-apt-get install -y git curl pkg-config
+apt-get install -y git curl
