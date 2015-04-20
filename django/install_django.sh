@@ -14,16 +14,12 @@ pip install -r /vagrant/requirements.txt
 sudo echo "DEBUG=TRUE" >> /etc/environment
 sudo echo "SECRET_KEY='LousyKeyOnlySuitableForDevEnvironments'" >> /etc/environment
 sudo echo "DATABASE_URL='postgres://djaxelrod:djaxelrod@localhost/djaxelrod'" >> /etc/environment
-for line in $( cat /etc/environment ) ; do export $line ; done
 
 # Create database
 su postgres -c "createuser -w -d -r -s $DJANGO_PROJECT"
 sudo -u postgres psql -c "ALTER USER $DJANGO_PROJECT WITH PASSWORD '$DJANGO_PROJECT';"
 su postgres -c "createdb -O $DJANGO_PROJECT $DJANGO_PROJECT"
 cd /vagrant
-python manage.py migrate
 
 # configure the django dev server as an upstart daemon
 cp /vagrant/provision/django/django-server.conf /etc/init
-start django-server
-
