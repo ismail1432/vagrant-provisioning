@@ -19,7 +19,6 @@ sudo echo "DATABASE_URL='postgres://djaxelrod:djaxelrod@localhost/djaxelrod'" >>
 su postgres -c "createuser -w -d -r -s $DJANGO_PROJECT"
 sudo -u postgres psql -c "ALTER USER $DJANGO_PROJECT WITH PASSWORD '$DJANGO_PROJECT';"
 su postgres -c "createdb -O $DJANGO_PROJECT $DJANGO_PROJECT"
-cd /vagrant
 
 # configure the django dev server as an upstart daemon
 cp /vagrant/provision/django/django-server.conf /etc/init
