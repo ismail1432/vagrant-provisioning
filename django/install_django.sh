@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
-echo "Starting Django installation"
+echo "************************************"
+echo "*** Starting Django installation ***"
+echo "************************************"
 
-# Assign the script arguments to meaningful variables
-DJANGO_PROJECT=$1
+if [[ -z "$1" ]]
+then
+  echo "Django project name not set. Check the Vagrant file."
+  exit 1
+else
+  DJANGO_PROJECT=$1
+fi
 
 # install pip
 apt-get install -y python-pip
+
+# install packages for python-postgresql connectivity
+apt-get install -y libpq-dev python-dev
 
 # install python packages
 pip install -r /vagrant/requirements.txt
