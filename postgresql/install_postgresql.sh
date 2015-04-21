@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-echo "****************************************"
-echo "*** Starting Postgresql installation ***"
-echo "****************************************"
+echo "*****************************"
+echo "*** Installing Postgresql ***"
+echo "*****************************"
 
 PG_VERSION=9.3
 

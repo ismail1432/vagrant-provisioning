@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#!/usr/bin/env bash
+echo "************************"
+echo "*** Installing Neo4J ***"
+echo "************************"
 
 # Add the Neo4J key into the apt package manager:
 wget -O - http://debian.neo4j.org/neotechnology.gpg.key | apt-key add -

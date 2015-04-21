@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-echo "************************************"
-echo "*** Starting Django installation ***"
-echo "************************************"
+echo "*************************"
+echo "*** Installing Django ***"
+echo "*************************"
 
 if [[ -z "$1" ]]
 then
